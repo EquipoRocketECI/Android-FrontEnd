@@ -18,8 +18,14 @@
         tools:layout="@layout/fragment_gallery" />
 
     <fragment
+        android:id="@+id/nav_idea"
+        android:name="equipo.rocket.headhunters.ui.idea.IdeaFragment"
+        android:label="@string/menu_idea"
+        tools:layout="@layout/fragment_idea" />
+
+    <fragment
         android:id="@+id/nav_slideshow"
         android:name="equipo.rocket.headhunters.ui.slideshow.SlideshowFragment"
-        android:label="@string/menu_slideshow"
+        android:label="@string/hello_blank_fragment"
         tools:layout="@layout/fragment_slideshow" />
 </navigation>
