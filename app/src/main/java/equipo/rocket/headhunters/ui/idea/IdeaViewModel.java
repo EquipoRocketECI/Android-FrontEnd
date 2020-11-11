@@ -21,10 +21,10 @@ public class IdeaViewModel extends ViewModel {
         descripcion.setValue("Descripción de la idea para convencer a donadores e inversores");
 
         categoria = new MutableLiveData<>();
-        categoria.setValue("Moda");
+        categoria.setValue("Categoría");
 
         calificacion = new MutableLiveData<>();
-        calificacion.setValue("5");
+        calificacion.setValue("5.0");
 
         etapa = new MutableLiveData<>();
         etapa.setValue("Etapa");
