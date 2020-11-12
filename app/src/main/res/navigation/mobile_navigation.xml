@@ -18,14 +18,20 @@
         tools:layout="@layout/fragment_gallery" />
 
     <fragment
+        android:id="@+id/nav_signin"
+        android:name="equipo.rocket.headhunters.ui.SignIn.SignInFragment"
+        android:label="@string/menu_signin"
+        tools:layout="@layout/fragment_signin" />
+
+    <fragment
         android:id="@+id/nav_idea"
         android:name="equipo.rocket.headhunters.ui.idea.IdeaFragment"
         android:label="@string/menu_idea"
         tools:layout="@layout/fragment_idea" />
 
     <fragment
-        android:id="@+id/nav_slideshow"
-        android:name="equipo.rocket.headhunters.ui.slideshow.SlideshowFragment"
-        android:label="@string/hello_blank_fragment"
-        tools:layout="@layout/fragment_slideshow" />
+        android:id="@+id/nav_login"
+        android:name="equipo.rocket.headhunters.ui.Login.LoginFragment"
+        android:label="@string/menu_login"
+        tools:layout="@layout/fragment_login" />
 </navigation>
