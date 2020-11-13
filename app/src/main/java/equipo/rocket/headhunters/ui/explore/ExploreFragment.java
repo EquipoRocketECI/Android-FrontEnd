@@ -37,10 +37,11 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ExploreFragment extends Fragment {
 
-    private final ExecutorService executorService = Executors.newFixedThreadPool(1);
+    private static final String TAG = ExploreFragment.class.getSimpleName();
 
     protected RecyclerView mRecyclerView;
     protected RecyclerView.LayoutManager mLayoutManager;
+    protected IdeaCardAdapter mAdapter;
 
     protected List<Idea> mIdeasList;
 
@@ -49,16 +50,21 @@ public class ExploreFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater,
                              @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
+
+        View rootView = inflater.inflate(R.layout.fragment_explore, container, false);
+        rootView.setTag(TAG);
+        mAdapter = new IdeaCardAdapter();
         mLayoutManager = new LinearLayoutManager(getActivity());
 
-        //mRecyclerView.setLayoutManager(mLayoutManager);
-        //mRecyclerView.scrollToPosition(0);
+        mRecyclerView = (RecyclerView) rootView.findViewById(R.id.exploreRecyclerView);
+
+        mRecyclerView.setLayoutManager(mLayoutManager);
+        mRecyclerView.scrollToPosition(0);
+        mRecyclerView.setAdapter(mAdapter);
 
         initIdeasList();
 
-        //Log.d(this.getClass().getSimpleName(),mIdeasList.get(0).toString());
-
-        return inflater.inflate(R.layout.fragment_explore, container, false);
+        return rootView;
     }
 
     private void initIdeasList() {
@@ -74,26 +80,16 @@ public class ExploreFragment extends Fragment {
             @Override
             public void onResponse(Call<List<Idea>> call, Response<List<Idea>> response) {
                 mIdeasList = response.body();
+                mAdapter.setmIdeasList(mIdeasList);
+                mAdapter.notifyDataSetChanged();
             }
 
             @Override
             public void onFailure(Call<List<Idea>> call, Throwable t) {
 
-                Log.d(this.getClass().getSimpleName(),"ERROR");
+                Log.d(this.getClass().getSimpleName(),t.getMessage() +"|||||||||||||||||||");
             }
         });
-
-         /*executorService.execute(new Runnable() {
-             @Override
-            public void run() {
-                 try {
-
-
-                 } catch (IOException e) {
-                     e.printStackTrace();
-                 }
-             }
-        });*/
     }
 
 }

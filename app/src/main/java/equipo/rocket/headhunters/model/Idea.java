@@ -182,7 +182,7 @@ public class Idea {
         this.fase = fase;
     }
 
-    @Override
+    /*@Override
     public String toString() {
         return "Idea [adquisiciontemprana=" + adquisiciontemprana + ", calificacion=" + calificacion + ", categoria="
                 + categoria + ", descripcion=" + descripcion + ", descuento=" + descuento + ", expertospersonal="
@@ -191,5 +191,5 @@ public class Idea {
                 + ", montoLimite=" + montoLimite + ", montoRecolectado=" + montoRecolectado + ", nombre=" + nombre
                 + ", pequenasdonaciones=" + pequenasdonaciones + ", propietario=" + propietario + ", versionpremium="
                 + versionpremium + "]";
-    }
+    }*/
 }

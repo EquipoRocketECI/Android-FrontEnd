@@ -100,4 +100,7 @@
         "when a user tries to pick up one of cards.\n\n"
     </string>
     <string name="menu_explore">Explore</string>
+    <string name="idea_card_desc_text">test description</string>
+    <string name="ver_mas_text">VER MAS</string>
+    <string name="idea_img_description">test description</string>
 </resources>
