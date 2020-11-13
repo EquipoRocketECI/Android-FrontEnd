@@ -53,7 +53,7 @@ public class ExploreFragment extends Fragment {
 
         View rootView = inflater.inflate(R.layout.fragment_explore, container, false);
         rootView.setTag(TAG);
-        mAdapter = new IdeaCardAdapter();
+        mAdapter = new IdeaCardAdapter(this);
         mLayoutManager = new LinearLayoutManager(getActivity());
 
         mRecyclerView = (RecyclerView) rootView.findViewById(R.id.exploreRecyclerView);
