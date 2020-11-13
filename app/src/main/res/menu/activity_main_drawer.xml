@@ -13,6 +13,10 @@
             android:icon="@mipmap/ic_publish"
             android:title="@string/menu_gallery" />
         <item
+            android:id="@+id/nav_explore"
+            android:icon="@drawable/ic_menu_gallery"
+            android:title="@string/menu_explore" />
+        <item
             android:id="@+id/nav_idea"
             android:icon="@drawable/ic_menu_slideshow"
             android:title="@string/menu_idea" />
@@ -26,10 +30,5 @@
             android:id="@+id/nav_signin"
             android:icon="@drawable/ic_menu_slideshow"
             android:title="@string/menu_signin" />
-
-        <item
-            android:id="@+id/nav_explorar"
-            android:icon="@drawable/ic_menu_slideshow"
-            android:title="@string/menu_explorar" />
     </group>
 </menu>
