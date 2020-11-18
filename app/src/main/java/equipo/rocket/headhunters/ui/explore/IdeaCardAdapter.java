@@ -59,10 +59,10 @@ public class IdeaCardAdapter extends RecyclerView.Adapter<IdeaCardAdapter.IdeaCa
     public void onBindViewHolder(@NonNull IdeaCardViewHolder holder, int position) {
 
         Glide.with(fragment).load(mIdeasList.get(position).getImagen()).apply(RequestOptions.fitCenterTransform()).into(holder.getImageView());
-
         holder.getTitleView().setText(mIdeasList.get(position).getNombre());
         holder.getDescriptionView().setText(mIdeasList.get(position).getDescripcion());
-        holder.getButton().setEnabled(false);
+        //holder.getButton().setEnabled(false);
+
     //asociar idea particular con la tarjeta que entrega el viewholder
     }
 
