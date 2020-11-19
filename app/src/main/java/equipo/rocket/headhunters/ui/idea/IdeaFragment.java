@@ -10,29 +10,75 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import equipo.rocket.headhunters.R;
-import equipo.rocket.headhunters.ui.gallery.GalleryViewModel;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 
+import equipo.rocket.headhunters.R;
+import equipo.rocket.headhunters.model.Idea;
+import equipo.rocket.headhunters.services.IdeaServices;
+import equipo.rocket.headhunters.ui.gallery.GalleryViewModel;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 
 public class IdeaFragment extends Fragment {
 
+    protected RecyclerView mRecyclerView;
+    protected RecyclerView.LayoutManager mLayoutManager;
     private IdeaViewModel ideaviewmodel;
+    protected Idea mIdea;
+
+    private void initIdea(){
+
+        final Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(IdeaServices.IDEA_BASE_URL)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        IdeaServices ideaServices = retrofit.create(IdeaServices.class);
+         int IdeaID = ideaviewmodel.getIdeaID();
+
+        Call<Idea> IdeabyId = ideaServices.getIdeabyId(IdeaID);
+        IdeabyId.enqueue(new Callback<Idea>() {
+            @Override
+            public void onResponse( Call<Idea> call,  Response<Idea> response) {
+                mIdea = response.body();
+                ideaviewmodel.setmIdea(mIdea);
+
+            }
+            @Override
+            public void onFailure( Call<Idea> call, Throwable t) {
+
+                Log.d(this.getClass().getSimpleName(),t.getMessage() +"|||||||||||||||||||");
+            }
+        });
+    };
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
+
         ideaviewmodel =
                 new ViewModelProvider(this).get(IdeaViewModel.class);
+
         View root = inflater.inflate(R.layout.fragment_idea, container, false);
+
+        initIdea();
         //set Nombre
         final TextView nombre = root.findViewById(R.id.textPublicarTitulo2);
-
         ideaviewmodel.getNombre().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) { nombre.setText(s); }
@@ -72,6 +118,38 @@ public class IdeaFragment extends Fragment {
             public void onChanged(@Nullable String s) { autor.setText(s); }
         });
 
+        //set recuado
+        final TextView recaudo = root.findViewById(R.id.textRecaudado);
+        ideaviewmodel.getMonto().observe(getViewLifecycleOwner(), new Observer<String>() {
+            @Override
+            public void onChanged(@Nullable String s) { recaudo.setText(s); }
+        });
+
+        //set porcentaje
+        final ProgressBar porcentaje = root.findViewById(R.id.progressBar);
+        ideaviewmodel.getPorcent().observe(getViewLifecycleOwner(), new Observer<Integer>() {
+            @Override
+            public void onChanged(@Nullable Integer integer) {
+                porcentaje.setProgress(integer);
+            }
+        });
+
+        //set antesDe
+        final TextView antesDe = root.findViewById(R.id.textView12);
+        ideaviewmodel.getFechaLimite().observe(getViewLifecycleOwner(), new Observer<String>() {
+            @Override
+            public void onChanged(@Nullable String s) { antesDe.setText(s); }
+        });
+
+        //set Image
+        final ImageView imageView =  root.findViewById(R.id.imageView8);
+        ideaviewmodel.getImage().observe(getViewLifecycleOwner(), new Observer<String>() {
+            @Override
+            public void onChanged(@Nullable String s) { Glide.with(imageView.getContext()).load(s).apply(RequestOptions.fitCenterTransform()).into(imageView); }
+        });
+
         return root;
     }
+
+
 }

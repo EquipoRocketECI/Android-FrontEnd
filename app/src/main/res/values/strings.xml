@@ -118,4 +118,39 @@
     <string name="idea_card_desc_text">test description</string>
     <string name="ver_mas_text">VER MAS</string>
     <string name="idea_img_description">test description</string>
+
+
+    <!-- Publicar idea -->
+    <string name="publish_titulo">Publica tu idea/proyecto</string>
+    <string name="publish_seleccionar_categoria">Selecciona una categoría para clasificar tu proyecto:</string>
+    <string name="publish_dar_nombre">Dale un nombre para identificarla:</string>
+    <string name="publish_describir">Descríbela:</string>
+    <string name="publish_subir_imagen">¿Tienes alguna imagen o logo que represente tu idea? ¡Súbela!:</string>
+    <string name="publish_que_buscas">¿Qué estas buscando para tu proyecto?</string>
+        <string name="publish_donaciones">Pequeñas Donaciones</string>
+        <string name="publish_inversiones">Grandes Inversiones</string>
+        <string name="publish_expertos">Expertos o Personal</string>
+    <string name="publish_incentivos">¿Qué incentivos le quieres dar a las personas que donen?</string>
+        <string name="publish_premium">Versión Premium/Especial del Producto</string>
+        <string name="publish_descuentos">Descuentos en el Producto o Servicio Final</string>
+        <string name="publish_adqtemprana">Adquisición Temprana del Producto</string>
+    <string name="publish_seleccionar_areas">¿En que áreas necesitas expertos o personal?</string>
+        <string name="publish_derecho">Derecho y Leyes</string>
+        <string name="publish_economia">Economía y Finanzas</string>
+        <string name="publish_ingenieria">Ingeniería</string>
+        <string name="publish_manufacura">Manufactura</string>
+    <string name="publish_monto_limite">Define un monto límite:</string>
+    <string name="publish_fecha_limite">Define una fecha límite para reunir lo que necesitas:</string>
+    <string name="publish_boton">Haz volar tu idea</string>
+
+    <string-array name="categorias_array">
+        <item>Agro</item>
+        <item>Cultura</item>
+        <item>Educación</item>
+        <item>Entretenimiento</item>
+        <item>Gastronomia</item>
+        <item>Moda</item>
+        <item>Tecnología</item>
+    </string-array>
+
 </resources>
