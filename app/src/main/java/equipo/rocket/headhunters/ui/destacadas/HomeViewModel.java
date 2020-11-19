@@ -1,4 +1,4 @@
-package equipo.rocket.headhunters.ui.home;
+package equipo.rocket.headhunters.ui.destacadas;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;

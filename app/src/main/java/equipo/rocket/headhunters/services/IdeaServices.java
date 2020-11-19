@@ -13,4 +13,7 @@ public interface IdeaServices {
 
     @GET("/ideas")
     Call<List<Idea>> getAllIdeas();
+
+    @GET("ideas/getDestacadas")
+    Call<List<Idea>> getIdeasDestacadas();
 }
