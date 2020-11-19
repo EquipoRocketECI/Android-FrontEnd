@@ -27,7 +27,7 @@ public class Idea {
 
     }
     public Idea(String nombre, String descripcion, Date fechaLimite, int montoLimite, int montoRecolectado,
-                String categoria, int calificacion, String imagen) {
+                String categoria, int calificacion, String imagen, String propietario, String fase) {
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.fechaLimite = fechaLimite;
@@ -36,6 +36,8 @@ public class Idea {
         this.categoria = categoria;
         this.calificacion = calificacion;
         this.imagen = imagen;
+        this.propietario = propietario;
+        this.fase = fase;
     }
 
 
@@ -175,9 +177,11 @@ public class Idea {
     public void setPropietario(String propietario) {
         this.propietario = propietario;
     }
+
     public String getFase() {
         return fase;
     }
+
     public void setFase(String fase) {
         this.fase = fase;
     }
