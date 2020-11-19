@@ -6,6 +6,7 @@ import java.util.List;
 import equipo.rocket.headhunters.model.Idea;
 import retrofit2.Call;
 import retrofit2.http.GET;
+import retrofit2.http.Path;
 
 public interface IdeaServices {
 
@@ -14,6 +15,12 @@ public interface IdeaServices {
     @GET("/ideas")
     Call<List<Idea>> getAllIdeas();
 
+
     @GET("ideas/getDestacadas")
     Call<List<Idea>> getIdeasDestacadas();
+
+    @GET("ideas/{id}")
+    Call<Idea> getIdeabyId(@Path("id") int ideaID);
+
+
 }
