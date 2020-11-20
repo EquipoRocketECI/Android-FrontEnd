@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="equipo.rocket.headhunters">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -11,7 +11,7 @@
         android:roundIcon="@mipmap/ic_logo"
         android:supportsRtl="true"
         android:theme="@style/Theme.HeadHunters">
-
+        <activity android:name=".ui.interacciones.interacciones"></activity>
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name"

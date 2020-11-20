@@ -1,5 +1,6 @@
 package equipo.rocket.headhunters.ui.idea;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 
@@ -16,6 +17,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -27,6 +29,7 @@ import equipo.rocket.headhunters.R;
 import equipo.rocket.headhunters.model.Idea;
 import equipo.rocket.headhunters.services.IdeaServices;
 import equipo.rocket.headhunters.ui.gallery.GalleryViewModel;
+import equipo.rocket.headhunters.ui.interacciones.Interacciones;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -149,6 +152,13 @@ public class IdeaFragment extends Fragment {
         });
 
         return root;
+    }
+    public void getInteracciones(View view) {
+        Intent intent = new Intent(getContext(), Interacciones.class);
+        //EditText editText = (EditText) findViewById(R.id.editText);
+        //String message = editText.getText().toString();
+        //intent.putExtra(EXTRA_MESSAGE, message);
+        startActivity(intent);
     }
 
 
