@@ -1,9 +1,5 @@
 package equipo.rocket.headhunters.ui.idea;
 
-import android.util.Log;
-import android.view.View;
-
-import androidx.annotation.Nullable;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
@@ -13,12 +9,6 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import equipo.rocket.headhunters.model.Idea;
-import equipo.rocket.headhunters.services.IdeaServices;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 
 public class IdeaViewModel extends ViewModel {
