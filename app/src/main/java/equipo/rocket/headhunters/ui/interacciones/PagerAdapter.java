@@ -22,17 +22,16 @@ public class PagerAdapter extends FragmentPagerAdapter {
     @NonNull
     @Override
     public Fragment getItem(int position) {
-        switch (position) {
-            case 0:
-                new ComentariosFragment();
-            case 1:
-                new DonacionesFragment();
-            case 2:
-                new InversionesFragment();
-            default:
-                return null;
+        if (position == 0) {
+            return new ComentariosFragment();
+        }
+        if (position == 1) {
+             return new DonacionesFragment();
+        } else {
+            return new InversionesFragment();
         }
     }
+
 
     @Override
     public int getCount() {

@@ -13,10 +13,12 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.os.Parcelable;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
@@ -24,6 +26,8 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.snackbar.Snackbar;
 
 import equipo.rocket.headhunters.R;
 import equipo.rocket.headhunters.model.Idea;
@@ -43,6 +47,8 @@ public class IdeaFragment extends Fragment {
     protected RecyclerView.LayoutManager mLayoutManager;
     private IdeaViewModel ideaviewmodel;
     protected Idea mIdea;
+
+    public static final String EXTRA_IDEA_ID = "equipo.rocket.headhunters.EXTRA_IDEA_ID";
 
     private void initIdea(){
 
@@ -151,15 +157,18 @@ public class IdeaFragment extends Fragment {
             public void onChanged(@Nullable String s) { Glide.with(imageView.getContext()).load(s).apply(RequestOptions.fitCenterTransform()).into(imageView); }
         });
 
+        //interacciones
+        Button button = root.findViewById(R.id.interaccionesButton);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), Interacciones.class);
+                intent.putExtra(EXTRA_IDEA_ID,  ideaviewmodel.getId().getValue().toString());
+                startActivity(intent);
+            }
+        });
+
         return root;
     }
-    public void getInteracciones(View view) {
-        Intent intent = new Intent(getContext(), Interacciones.class);
-        //EditText editText = (EditText) findViewById(R.id.editText);
-        //String message = editText.getText().toString();
-        //intent.putExtra(EXTRA_MESSAGE, message);
-        startActivity(intent);
-    }
-
 
 }

@@ -13,6 +13,8 @@ import equipo.rocket.headhunters.model.Idea;
 
 public class IdeaViewModel extends ViewModel {
 
+    private MutableLiveData<Integer> id;
+
     private MutableLiveData<String> nombre;
     private MutableLiveData<String> autor;
     private MutableLiveData<String> categoria;
@@ -26,10 +28,11 @@ public class IdeaViewModel extends ViewModel {
     private MutableLiveData<String> fechaLimite;
     private MutableLiveData<String> imagen;
 
-    private static int IdeaID=29;
+    private static int IdeaID=28;
 
 
     public IdeaViewModel(){
+        id = new MutableLiveData<>();
         nombre = new MutableLiveData<>();
         descripcion = new MutableLiveData<>();
         categoria = new MutableLiveData<>();
@@ -44,6 +47,8 @@ public class IdeaViewModel extends ViewModel {
     }
 
     public void setmIdea (Idea idea){
+
+        id.setValue(idea.getId());
 
         nombre.setValue(idea.getNombre());
 
@@ -74,9 +79,10 @@ public class IdeaViewModel extends ViewModel {
 
     };
 
-
     public static int getIdeaID(){return IdeaID;};
     public static void setIdeaID(int IdeaID){IdeaID=IdeaID;};
+
+    public LiveData<Integer> getId() { return id; }
 
     public LiveData<String> getNombre() {
         return nombre;

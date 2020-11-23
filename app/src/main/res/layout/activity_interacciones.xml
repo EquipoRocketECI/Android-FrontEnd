@@ -12,14 +12,19 @@
         android:id="@+id/tabInteracciones"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/design_default_color_primary">
+        android:background="#3F51B5"
+        app:tabTextColor="@color/white"
+        app:tabIndicatorColor="#E80B0B"
+        app:tabIconTint="@color/white"
+        app:tabTextAppearance="@style/TextAppearance.AppCompat.Small"
+        >
 
         <com.google.android.material.tabs.TabItem
             android:id="@+id/tabComentarios"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/COMENTARIOS"
-            android:icon="@drawable/ic_menu_camera"
+            android:icon="@mipmap/ic_message"
             />
 
         <com.google.android.material.tabs.TabItem
@@ -27,7 +32,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/DONACIONES"
-            android:icon="@drawable/ic_menu_camera"
+            android:icon="@mipmap/ic_favorite_border"
             />
 
         <com.google.android.material.tabs.TabItem
@@ -35,14 +40,16 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/INVERSIONES"
-            android:icon="@drawable/ic_menu_camera"
+            android:icon="@mipmap/ic_monetization_on"
             />
     </com.google.android.material.tabs.TabLayout>
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/viewPagerInteracciones"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/fondoApp"
+        >
 
     </androidx.viewpager.widget.ViewPager>
 </LinearLayout>

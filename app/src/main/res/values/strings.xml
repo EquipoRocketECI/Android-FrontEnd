@@ -143,6 +143,8 @@
     <string name="publish_fecha_limite">Define una fecha límite para reunir lo que necesitas:</string>
     <string name="publish_boton">Haz volar tu idea</string>
 
+    <string name="INTERACCIONES">Interacciones</string>
+
     <string name="COMENTARIOS">COMENTARIOS</string>
     <string name="DONACIONES">DONACIONES</string>
     <string name="INVERSIONES">INVERSIONES</string>
@@ -156,5 +158,7 @@
         <item>Moda</item>
         <item>Tecnología</item>
     </string-array>
+
+    <string name="preference_file_key">equipo.rocket.headhunters.PREFERENCE_FILE_KEY</string>
 
 </resources>
