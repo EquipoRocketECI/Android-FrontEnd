@@ -8,12 +8,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
@@ -23,13 +25,15 @@ import java.util.List;
 import equipo.rocket.headhunters.R;
 import equipo.rocket.headhunters.model.Idea;
 import equipo.rocket.headhunters.services.IdeaServices;
+import equipo.rocket.headhunters.ui.explore.filter.FilterDialogFragment;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class ExploreFragment extends Fragment {
+//maybe reimplement with activity?
+public class ExploreFragment extends Fragment implements FilterDialogFragment.FilterDialogListener {
 
     private static final String TAG = ExploreFragment.class.getSimpleName();
 
@@ -38,7 +42,6 @@ public class ExploreFragment extends Fragment {
     protected IdeaCardAdapter mAdapter;
 
     protected List<Idea> mIdeasList;
-    protected JsonObject mSelectedFilters;
 
     @Nullable
     @Override
@@ -56,6 +59,14 @@ public class ExploreFragment extends Fragment {
         mRecyclerView.setLayoutManager(mLayoutManager);
         mRecyclerView.scrollToPosition(0);
         mRecyclerView.setAdapter(mAdapter);
+
+        FloatingActionButton filterBtn = rootView.findViewById(R.id.filterBtn);
+        filterBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showFilterDialog(view);
+            }
+            });
 
         initIdeasList();
         //filter();
@@ -89,16 +100,16 @@ public class ExploreFragment extends Fragment {
         });
     }
 
-    private void filter(){
+    private void filter(JsonObject selectedFilters){
         final Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("https://mysterious-refuge-36454.herokuapp.com/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
         IdeaServices ideaServices = retrofit.create(IdeaServices.class);
-        mSelectedFilters = new JsonParser().parse("{ \"selectedCategories\":{ \"Moda\":true}}").getAsJsonObject();//change to gson, avoid valuepair
+        //melectedFilters = new JsonParser().parse("{ \"selectedCategories\":{ \"Moda\":true}}").getAsJsonObject();//change to gson, avoid valuepair
 
-        Call<List<Idea>> filter = ideaServices.filter(mSelectedFilters);
+        Call<List<Idea>> filter = ideaServices.filter(selectedFilters);
         filter.enqueue(new Callback<List<Idea>>() {
             @Override
             public void onResponse(Call<List<Idea>> call, Response<List<Idea>> response) {
@@ -114,4 +125,19 @@ public class ExploreFragment extends Fragment {
         });
     }
 
+    public void showFilterDialog(View view){//perhaps should have been a side sheet https://material.io/components/sheets-side, too late to change now
+        //implement button for filters
+        DialogFragment filterDialog = new FilterDialogFragment();
+        filterDialog.show(getParentFragmentManager(),"filters");
+    }
+
+    @Override
+    public void onDialogPositiveClick(FilterDialogFragment dialog) {
+        filter(dialog.getSelectedFilters());
+    }
+
+    @Override
+    public void onDialogNegativeClick(FilterDialogFragment dialog) {
+        dialog.clearSelectedFilters();
+    }
 }

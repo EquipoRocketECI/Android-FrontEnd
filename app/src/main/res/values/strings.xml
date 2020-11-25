@@ -118,4 +118,9 @@
     <string name="idea_card_desc_text">test description</string>
     <string name="ver_mas_text">VER MAS</string>
     <string name="idea_img_description">test description</string>
+    <string name="low_investment">Baja inversión</string>
+    <string name="mid_investment">Media inversión</string>
+    <string name="high_investment">Alta inversión</string>
+    <string name="cancel">Cancel</string>
+    <string name="ok">Ok</string>
 </resources>
