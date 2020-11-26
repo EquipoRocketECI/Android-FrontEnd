@@ -121,7 +121,6 @@
     <string name="ver_mas_text">VER MÁS</string>
     <string name="idea_img_description">test description</string>
 
-
     <!-- Publicar idea -->
     <string name="publish_titulo">Publica tu idea/proyecto</string>
     <string name="publish_seleccionar_categoria">Selecciona una categoría para clasificar tu proyecto:</string>
@@ -163,4 +162,9 @@
 
     <string name="preference_file_key">equipo.rocket.headhunters.PREFERENCE_FILE_KEY</string>
 
+    <string name="low_investment">Baja inversión</string>
+    <string name="mid_investment">Media inversión</string>
+    <string name="high_investment">Alta inversión</string>
+    <string name="cancel">Cancel</string>
+    <string name="ok">Ok</string>
 </resources>

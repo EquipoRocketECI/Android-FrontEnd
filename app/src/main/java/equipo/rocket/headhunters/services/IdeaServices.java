@@ -1,12 +1,12 @@
 package equipo.rocket.headhunters.services;
 
+import com.google.gson.JsonObject;
 
 import java.util.List;
 
 import equipo.rocket.headhunters.model.Idea;
 import retrofit2.Call;
 import retrofit2.http.Body;
-import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.Headers;
 import retrofit2.http.POST;
@@ -18,7 +18,6 @@ public interface IdeaServices {
 
     @GET("/ideas")
     Call<List<Idea>> getAllIdeas();
-
 
     @GET("ideas/getDestacadas")
     Call<List<Idea>> getIdeasDestacadas();
@@ -33,6 +32,6 @@ public interface IdeaServices {
     @POST("ideas")
     Call <Idea>  postIdea(@Body Idea idea);
 
-
-
+    @POST("/ideas/filtered")
+    Call<List<Idea>> filter(@Body JsonObject selectedFilters);
 }
