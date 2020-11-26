@@ -13,6 +13,7 @@ import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,6 +21,7 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
@@ -33,6 +35,14 @@ public class FilterDialogFragment extends DialogFragment {
 
     // TODO: Rename and change types of parameters
     private JsonObject selectedFilters;
+    private JsonObject investmentRange;
+    private JsonObject categories;
+
+    private RadioGroup investmentRadioGroup;
+
+    private EditText investmentLowBound;
+    private EditText investmentHighBound;
+
 
     public FilterDialogFragment() {
         // Required empty public constructor
@@ -46,7 +56,22 @@ public class FilterDialogFragment extends DialogFragment {
 
         LayoutInflater inflater = requireActivity().getLayoutInflater();
 
-        builder.setView(inflater.inflate(R.layout.fragment_filter_dialog,null))
+
+        View view = inflater.inflate(R.layout.fragment_filter_dialog,null);
+
+        selectedFilters = new JsonObject();
+        investmentRange = new JsonObject();
+
+        investmentRadioGroup = view.findViewById(R.id.investmentRadioGroup);
+        investmentRadioGroup.setOnCheckedChangeListener((group, checkedId) -> {
+            onRadioGroupInvestmentRangeChange(group,checkedId);
+        });
+        investmentLowBound = view.findViewById(R.id.investmentTextArea_lowBound);
+        investmentLowBound.setOnFocusChangeListener((v,hasFocus)->onEditTextInvestmentRangeChange(v,hasFocus));
+        investmentHighBound = view.findViewById(R.id.investmentTextArea_highBound);
+        investmentHighBound.setOnFocusChangeListener((v,hasFocus)->onEditTextInvestmentRangeChange(v,hasFocus));
+
+        builder.setView(view)
                 .setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
@@ -62,40 +87,42 @@ public class FilterDialogFragment extends DialogFragment {
         return builder.create();
     }
 
-    public void onInvestmentRangeChange(View view){
-        JsonObject investmentRange = new JsonObject();
+    public void onEditTextInvestmentRangeChange(View view,boolean hasFocus){
 
+        investmentRadioGroup.clearCheck();
+        if(!hasFocus){
+            if (view.getId() == R.id.investmentTextArea_lowBound) {
+                investmentRange.addProperty("lowBound", Integer.parseInt(0+investmentLowBound.getText().toString()));
+            } else if (view.getId() == R.id.investmentTextArea_highBound) {
+                investmentRange.addProperty("highBound", Integer.parseInt(0+investmentHighBound.getText().toString()));
+            }
 
-        if(view instanceof EditText)
-        {
-            ((RadioGroup) getView().findViewById(R.id.investmentRadioGroup)).clearCheck();
-            investmentRange.addProperty("lowBound",((EditText) view).getText().toString());
-            investmentRange.addProperty("highBound",Integer.MAX_VALUE);
-        }else{
-            ((EditText) getView().findViewById(R.id.investmentTextArea_lowBound)).setText("");
-            ((EditText) getView().findViewById(R.id.investmentTextArea_lowBound)).setText("");
-            boolean checked = ((RadioButton) view).isChecked();
-            switch (view.getId()){
+        }
+        selectedFilters.add("investmentRange",investmentRange);
+    }
+
+    public void onRadioGroupInvestmentRangeChange(RadioGroup group,int checkedId){
+
+            switch (checkedId){
                 case R.id.lowInvestment:
-                    if(checked){
                         investmentRange.addProperty("lowBound",0);
-                        investmentRange.addProperty("highBound",Integer.MAX_VALUE);
-                    }
+                        investmentRange.addProperty("highBound",100000);
                     break;
                 case R.id.midInvestment:
-                    if(checked){
-                        investmentRange.addProperty("lowBound",((EditText) view).getText().toString());
-                        investmentRange.addProperty("highBound",Integer.MAX_VALUE);
-                    }
+                        investmentRange.addProperty("lowBound",100000);
+                        investmentRange.addProperty("highBound",250000000);
                     break;
                 case R.id.highInvestment:
-                    if(checked){
-                        investmentRange.addProperty("lowBound",1);
+                        investmentRange.addProperty("lowBound",250000000);
                         investmentRange.addProperty("highBound",Integer.MAX_VALUE);
-                    }
                     break;
+
             }
-        }
+            if(checkedId != -1){
+                investmentLowBound.setText("");
+                investmentHighBound.setText("");
+            }
+
         selectedFilters.add("investmentRange",investmentRange);
 
     }
@@ -105,10 +132,15 @@ public class FilterDialogFragment extends DialogFragment {
     }
 
     public void clearSelectedFilters(){
-        ((RadioGroup) getView().findViewById(R.id.investmentRadioGroup)).clearCheck();
-        ((EditText) getView().findViewById(R.id.investmentTextArea_lowBound)).setText("");
-        ((EditText) getView().findViewById(R.id.investmentTextArea_lowBound)).setText("");
-        selectedFilters = null;
+        investmentRadioGroup.clearCheck();
+        investmentLowBound.setText("");
+        investmentHighBound.setText("");
+        selectedFilters.remove("investmentRange");
+    }
+
+    public void clearEditTextFocus(){
+        investmentHighBound.clearFocus();
+        investmentLowBound.clearFocus();
     }
 
     public interface FilterDialogListener{
@@ -124,8 +156,9 @@ public class FilterDialogFragment extends DialogFragment {
 
         try {
 
-            Log.d(this.getClass().getSimpleName(), this.getContext()+"ffffAAAAFFFFff!!!!");
-            listener = (FilterDialogListener) context;
+
+            listener = (FilterDialogListener) getTargetFragment();
+
         }catch (ClassCastException e){
             throw new ClassCastException(getActivity().toString()
                     + " must implement FilterDialogListener");

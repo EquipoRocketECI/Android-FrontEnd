@@ -61,12 +61,7 @@ public class ExploreFragment extends Fragment implements FilterDialogFragment.Fi
         mRecyclerView.setAdapter(mAdapter);
 
         FloatingActionButton filterBtn = rootView.findViewById(R.id.filterBtn);
-        filterBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                showFilterDialog(view);
-            }
-            });
+        filterBtn.setOnClickListener(view -> showFilterDialog(view));
 
         initIdeasList();
         //filter();
@@ -83,7 +78,6 @@ public class ExploreFragment extends Fragment implements FilterDialogFragment.Fi
         IdeaServices ideaServices = retrofit.create(IdeaServices.class);
 
         Call<List<Idea>> getAllIdeas = ideaServices.getAllIdeas();
-        Log.d(this.getClass().getSimpleName(),getAllIdeas.request().toString());
         getAllIdeas.enqueue(new Callback<List<Idea>>() {
             @Override
             public void onResponse(Call<List<Idea>> call, Response<List<Idea>> response) {
@@ -95,7 +89,7 @@ public class ExploreFragment extends Fragment implements FilterDialogFragment.Fi
             @Override
             public void onFailure(Call<List<Idea>> call, Throwable t) {
 
-                Log.d(this.getClass().getSimpleName(),t.getMessage() +"|||||||||||||||||||");
+                Log.d(this.getClass().getSimpleName(),t.getMessage());
             }
         });
     }
@@ -110,29 +104,32 @@ public class ExploreFragment extends Fragment implements FilterDialogFragment.Fi
         //melectedFilters = new JsonParser().parse("{ \"selectedCategories\":{ \"Moda\":true}}").getAsJsonObject();//change to gson, avoid valuepair
 
         Call<List<Idea>> filter = ideaServices.filter(selectedFilters);
+        Log.e(this.getClass().getSimpleName(),selectedFilters.toString());
         filter.enqueue(new Callback<List<Idea>>() {
             @Override
             public void onResponse(Call<List<Idea>> call, Response<List<Idea>> response) {
-                mIdeasList=response.body();
+                mIdeasList=response.body();//need to handle 404
                 mAdapter.setmIdeasList(mIdeasList);
                 mAdapter.notifyDataSetChanged();
             }
 
             @Override
             public void onFailure(Call<List<Idea>> call, Throwable t) {
-                Log.d(this.getClass().getSimpleName(),t.getMessage()+"||||||----");
+                t.printStackTrace();
+                Log.d(this.getClass().getSimpleName(),t.getMessage());
             }
         });
     }
 
     public void showFilterDialog(View view){//perhaps should have been a side sheet https://material.io/components/sheets-side, too late to change now
-        //implement button for filters
         DialogFragment filterDialog = new FilterDialogFragment();
+        filterDialog.setTargetFragment(this,22);
         filterDialog.show(getParentFragmentManager(),"filters");
     }
 
     @Override
     public void onDialogPositiveClick(FilterDialogFragment dialog) {
+        dialog.clearEditTextFocus();
         filter(dialog.getSelectedFilters());
     }
 

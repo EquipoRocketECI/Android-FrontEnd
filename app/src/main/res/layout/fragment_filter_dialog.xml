@@ -29,7 +29,6 @@
                 android:layout_marginBottom="16dp"
                 android:ems="10"
                 android:inputType="number"
-                android:onClick="onInvestmentRangeChange"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/investmentTextArea_highBound"
                 app:layout_constraintStart_toStartOf="parent"
@@ -45,7 +44,6 @@
                 android:layout_marginRight="16dp"
                 android:ems="10"
                 android:inputType="number"
-                android:onClick="onInvestmentRangeChange"
                 app:layout_constraintBaseline_toBaselineOf="@+id/investmentTextArea_lowBound"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/investmentTextArea_lowBound" />
@@ -67,7 +65,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:onClick="onInvestmentRangeChange"
                 android:text="@string/low_investment" />
 
             <RadioButton
@@ -75,7 +72,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:onClick="onInvestmentRangeChange"
                 android:text="@string/mid_investment" />
 
             <RadioButton
@@ -83,7 +79,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:onClick="onInvestmentRangeChange"
                 android:text="@string/high_investment" />
         </RadioGroup>
 
