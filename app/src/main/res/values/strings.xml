@@ -18,6 +18,8 @@
 
     <string name="prompt_email">Correo</string>
     <string name="prompt_password">Contrasena</string>
+    <string name="prompt_nombres">Nombres</string>
+    <string name="prompt_apellidos">Apellidos</string>
     <string name="action_log_in">Loguearse</string>
     <string name="action_sign_in">Registrarse</string>
     <string name="welcome">"Welcome !"</string>
@@ -149,6 +151,8 @@
     <string name="COMENTARIOS">COMENTARIOS</string>
     <string name="DONACIONES">DONACIONES</string>
     <string name="INVERSIONES">INVERSIONES</string>
+
+
 
     <string-array name="categorias_array">
         <item>Agro</item>

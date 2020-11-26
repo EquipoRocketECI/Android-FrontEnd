@@ -28,7 +28,7 @@ public class Login {
     public String getContrasena() {
         return contrasena;
     }
-    public void setDescripcion(String contrasena) {
+    public void setContrasena(String contrasena) {
         this.contrasena = contrasena;
     }
 
