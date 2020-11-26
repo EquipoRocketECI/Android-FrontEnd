@@ -47,6 +47,7 @@ public class IdeaFragment extends Fragment {
     protected RecyclerView.LayoutManager mLayoutManager;
     private IdeaViewModel ideaviewmodel;
     protected Idea mIdea;
+    private int ideaId;
 
     public static final String EXTRA_IDEA_ID = "equipo.rocket.headhunters.EXTRA_IDEA_ID";
 
@@ -58,9 +59,8 @@ public class IdeaFragment extends Fragment {
                 .build();
 
         IdeaServices ideaServices = retrofit.create(IdeaServices.class);
-         int IdeaID = ideaviewmodel.getIdeaID();
 
-        Call<Idea> IdeabyId = ideaServices.getIdeabyId(IdeaID);
+        Call<Idea> IdeabyId = ideaServices.getIdeabyId(ideaId);
         IdeabyId.enqueue(new Callback<Idea>() {
             @Override
             public void onResponse( Call<Idea> call,  Response<Idea> response) {
@@ -75,6 +75,10 @@ public class IdeaFragment extends Fragment {
             }
         });
     };
+
+    public IdeaFragment(int ideaId){
+        this.ideaId=ideaId;
+    }
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {

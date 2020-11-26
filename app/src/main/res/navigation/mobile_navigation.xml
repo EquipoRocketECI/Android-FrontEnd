@@ -23,11 +23,11 @@
         android:label="@string/menu_signin"
         tools:layout="@layout/fragment_signin" />
 
-    <fragment
+    <!--<fragment
         android:id="@+id/nav_idea"
         android:name="equipo.rocket.headhunters.ui.idea.IdeaFragment"
         android:label="@string/menu_idea"
-        tools:layout="@layout/fragment_idea" />
+        tools:layout="@layout/fragment_idea" />-->
 
     <fragment
         android:id="@+id/nav_login"

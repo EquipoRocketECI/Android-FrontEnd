@@ -1,6 +1,7 @@
 package equipo.rocket.headhunters.ui.explore;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -23,6 +24,7 @@ import java.util.List;
 
 import equipo.rocket.headhunters.R;
 import equipo.rocket.headhunters.model.Idea;
+import equipo.rocket.headhunters.ui.idea.IdeaFragment;
 
 public class IdeaCardAdapter extends RecyclerView.Adapter<IdeaCardAdapter.IdeaCardViewHolder> {
     private static final String TAG = IdeaCardAdapter.class.getSimpleName();
@@ -62,6 +64,16 @@ public class IdeaCardAdapter extends RecyclerView.Adapter<IdeaCardAdapter.IdeaCa
         holder.getTitleView().setText(mIdeasList.get(position).getNombre());
         holder.getDescriptionView().setText(mIdeasList.get(position).getDescripcion());
         //holder.getButton().setEnabled(false);
+        holder.getButton().setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                IdeaFragment ideaFragment = new IdeaFragment(mIdeasList.get(position).getId());
+                fragment.getActivity().getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.linearLayout,ideaFragment,"IdeaFragment")
+                        .addToBackStack(null)
+                        .commit();
+            }
+        });
 
     //asociar idea particular con la tarjeta que entrega el viewholder
     }

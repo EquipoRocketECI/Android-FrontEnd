@@ -64,7 +64,7 @@ public class IdeaViewModel extends ViewModel {
         autor.setValue("De: "+idea.getPropietario());
 
         df = new DecimalFormat("#.##");
-        double porcentaje = (100*idea.getMontoRecolectado())/idea.getMontoLimite();
+        double porcentaje = (100*idea.getMontoRecolectado())/idea.getMontoLimite();//divide by 0
         monto.setValue("Recaudado $"+idea.getMontoRecolectado()+" de $"+idea.getMontoLimite()+" ("+df.format(porcentaje)+"%)");
 
         int porcentajeaAprox = (int) porcentaje;

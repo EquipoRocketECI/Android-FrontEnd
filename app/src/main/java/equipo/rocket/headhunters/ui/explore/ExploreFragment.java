@@ -64,7 +64,6 @@ public class ExploreFragment extends Fragment implements FilterDialogFragment.Fi
         filterBtn.setOnClickListener(view -> showFilterDialog(view));
 
         initIdeasList();
-        //filter();
 
         return rootView;
     }
