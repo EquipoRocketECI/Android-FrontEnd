@@ -17,9 +17,8 @@
         android:layout_marginEnd="24dp"
         android:ems="10"
         android:inputType="textPersonName"
+        android:hint="@string/prompt_nombres"
         android:selectAllOnFocus="true"
-
-        android:text="Nombres"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
 
@@ -34,15 +33,15 @@
         android:layout_marginStart="24dp"
         android:ems="10"
         android:inputType="textPersonName"
+        android:hint="@string/prompt_apellidos"
         android:selectAllOnFocus="true"
-        android:text="Apellidos"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
 
         app:layout_constraintTop_toTopOf="parent"/>
 
     <EditText
-        android:id="@+id/text_correo"
+        android:id="@+id/text_nuevocorreo"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
@@ -58,7 +57,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/text_contrasena"
+        android:id="@+id/text_nuevacontrasena"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
@@ -71,24 +70,24 @@
         android:selectAllOnFocus="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_correo" />
+        app:layout_constraintTop_toBottomOf="@+id/text_nuevocorreo" />
 
     <Button
-        android:id="@+id/login"
+        android:id="@+id/accionRegistarse"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="start"
+
         android:layout_marginStart="48dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="48dp"
-        android:layout_marginBottom="64dp"
-        android:enabled="false"
+        android:layout_marginBottom="300dp"
         android:text="@string/action_sign_in"
         android:textColor="@color/white"
         app:backgroundTint="@color/teal_700"
         app:iconTint="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.544"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/text_contrasena"
         app:layout_constraintVertical_bias="0.084" />
@@ -110,15 +109,16 @@
         app:layout_constraintVertical_bias="0.3" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/button3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="220dp"
+        android:layout_marginTop="236dp"
         android:text="@string/action_log_in"
         app:backgroundTint="@color/teal_700"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.551"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/login" />
+        app:layout_constraintTop_toBottomOf="@+id/accionRegistarse" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
