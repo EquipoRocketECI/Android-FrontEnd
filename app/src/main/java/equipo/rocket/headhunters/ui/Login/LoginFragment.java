@@ -1,6 +1,9 @@
 package equipo.rocket.headhunters.ui.Login;
 
 import android.app.AlertDialog;
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,10 +23,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.math.BigInteger;
 import java.security.MessageDigest;
 
+import equipo.rocket.headhunters.MainActivity;
 import equipo.rocket.headhunters.R;
 import equipo.rocket.headhunters.model.Login;
 import equipo.rocket.headhunters.services.LoginServices;
 import equipo.rocket.headhunters.ui.destacadas.HomeFragment;
+import equipo.rocket.headhunters.ui.idea.IdeaFragment;
 import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
@@ -93,13 +98,17 @@ public class LoginFragment extends Fragment {
                         System.out.println(mLogin.getContrasena());
                         System.out.println(nuevaContrasena);
                         if (mLogin.getContrasena().equals(nuevaContrasena)){
-                            Fragment nuevoFragmento = new HomeFragment();
-                            FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
-                            transaction.replace(R.id.nav_login,nuevoFragmento );
-                            transaction.addToBackStack(null);
 
-                            // Commit a la transacción
-                            transaction.commit();
+                            //Guardar usuario en SharedPreferences
+                            SharedPreferences sharedPref =
+                                    getActivity().getSharedPreferences( getString( R.string.preference_file_key ), Context.MODE_PRIVATE );
+                            SharedPreferences.Editor editor = sharedPref.edit();
+                            editor.putString("user", mLogin.getCorreo());
+                            editor.commit();
+
+                            //Volver a la actividad principal
+                            Intent intent = new Intent(getActivity(), MainActivity.class);
+                            startActivity(intent);
 
                         }
                         else{

@@ -203,7 +203,13 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/INTERACCIONES"
-                    android:textAllCaps="false" />
+                    android:textAllCaps="true" />
+
+                <Button
+                    android:id="@+id/interactuarButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/INTERACTUAR" />
 
             </LinearLayout>
 

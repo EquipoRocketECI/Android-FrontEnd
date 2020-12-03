@@ -17,6 +17,11 @@
             >
         </activity>
         <activity
+            android:name=".ui.interacciones.post.InteraccionesPost"
+            android:label="@string/INTERACTUAR"
+            >
+        </activity>
+        <activity
             android:name=".MainActivity"
             android:label="@string/app_name"
             android:theme="@style/Theme.HeadHunters.NoActionBar">

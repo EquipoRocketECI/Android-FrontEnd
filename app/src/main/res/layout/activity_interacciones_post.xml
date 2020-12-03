@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ui.interacciones.Interacciones">
+
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tabInteractuar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#3F51B5"
+        app:tabTextColor="@color/white"
+        app:tabIndicatorColor="#E80B0B"
+        app:tabIconTint="@color/white"
+        app:tabTextAppearance="@style/TextAppearance.AppCompat.Small"
+        >
+
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/tabComentar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/COMENTAR"
+            android:icon="@mipmap/ic_message"
+            />
+
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/tabDonar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/DONAR"
+            android:icon="@mipmap/ic_favorite_border"
+            />
+
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/tabInvertir"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/INVERTIR"
+            android:icon="@mipmap/ic_monetization_on"
+            />
+    </com.google.android.material.tabs.TabLayout>
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/viewPagerInteractuar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/fondoApp"
+        >
+
+    </androidx.viewpager.widget.ViewPager>
+</LinearLayout>

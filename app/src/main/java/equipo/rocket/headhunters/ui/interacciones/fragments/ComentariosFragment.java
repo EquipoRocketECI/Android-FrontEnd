@@ -28,7 +28,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ComentariosFragment extends Fragment {
 
-    private static final String TAG = InversionesFragment.class.getSimpleName();
+    private static final String TAG = ComentariosFragment.class.getSimpleName();
 
     protected RecyclerView comentariosRecyclerView;
     protected RecyclerView.LayoutManager comentariosLayoutManager;

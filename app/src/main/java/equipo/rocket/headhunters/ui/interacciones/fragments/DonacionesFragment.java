@@ -28,7 +28,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class DonacionesFragment extends Fragment {
 
-    private static final String TAG = InversionesFragment.class.getSimpleName();
+    private static final String TAG = DonacionesFragment.class.getSimpleName();
 
     protected RecyclerView donacionesRecyclerView;
     protected RecyclerView.LayoutManager donacionesLayoutManager;

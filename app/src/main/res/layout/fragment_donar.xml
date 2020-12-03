@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.interacciones.fragments.DonacionesFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/donarRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0" />
+
+        <Button
+            android:id="@+id/buttonEnviarDonar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="30dp"
+            android:layout_marginRight="30dp"
+            android:text="ENVIAR"
+            app:layout_constraintEnd_toEndOf="@+id/donarRecyclerView"
+            app:layout_constraintHorizontal_bias="0.595"
+            app:layout_constraintStart_toStartOf="@+id/donarRecyclerView"
+            app:layout_constraintTop_toBottomOf="@+id/editTextNumberDonar" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginRight="10dp"
+            android:text="¿Deseas contribuir al proyecto con tu experiencia?"
+            android:gravity="center"
+            android:textColor="#000000"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/donarRecyclerView"
+            app:layout_constraintTop_toTopOf="@+id/donarRecyclerView" />
+
+        <EditText
+            android:id="@+id/comentarioDonacion"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginRight="10dp"
+            android:hint="Comentario"
+            app:layout_constraintEnd_toEndOf="@+id/donarRecyclerView"
+            app:layout_constraintStart_toStartOf="@+id/donarRecyclerView"
+            app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+        <RadioGroup
+            android:id="@+id/radio_group_calificacionDonar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginRight="10dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="@+id/donarRecyclerView"
+            app:layout_constraintStart_toStartOf="@+id/donarRecyclerView"
+            app:layout_constraintTop_toBottomOf="@+id/textView15">
+
+            <RadioButton
+                android:id="@+id/uno"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:buttonTint="@color/purple_700"
+                android:checked="true"
+                android:text="1" />
+
+            <RadioButton
+                android:id="@+id/dos"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:buttonTint="@color/purple_700"
+                android:text="2" />
+
+            <RadioButton
+                android:id="@+id/tres"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:buttonTint="@color/purple_700"
+                android:text="3" />
+
+            <RadioButton
+                android:id="@+id/cuatro"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:buttonTint="@color/purple_700"
+                android:text="4" />
+
+            <RadioButton
+                android:id="@+id/cinco"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:buttonTint="@color/purple_700"
+                android:text="5" />
+        </RadioGroup>
+
+        <TextView
+            android:id="@+id/textView15"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:text="Calificación:"
+            android:textColor="#000000"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="@+id/donarRecyclerView"
+            app:layout_constraintTop_toBottomOf="@+id/comentarioDonacion" />
+
+        <EditText
+            android:id="@+id/editTextNumberDonar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:ems="10"
+            android:hint="Monto"
+            android:inputType="number"
+            app:layout_constraintEnd_toEndOf="@+id/donarRecyclerView"
+            app:layout_constraintStart_toStartOf="@+id/donarRecyclerView"
+            app:layout_constraintTop_toBottomOf="@+id/radio_group_calificacionDonar" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</FrameLayout>

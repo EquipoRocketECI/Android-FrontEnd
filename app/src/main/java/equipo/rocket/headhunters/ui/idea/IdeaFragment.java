@@ -34,6 +34,7 @@ import equipo.rocket.headhunters.model.Idea;
 import equipo.rocket.headhunters.services.IdeaServices;
 import equipo.rocket.headhunters.ui.gallery.GalleryViewModel;
 import equipo.rocket.headhunters.ui.interacciones.Interacciones;
+import equipo.rocket.headhunters.ui.interacciones.post.InteraccionesPost;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -167,6 +168,17 @@ public class IdeaFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity(), Interacciones.class);
+                intent.putExtra(EXTRA_IDEA_ID,  ideaviewmodel.getId().getValue().toString());
+                startActivity(intent);
+            }
+        });
+
+        //interactuar
+        Button buttonInteractuar = root.findViewById(R.id.interactuarButton);
+        buttonInteractuar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), InteraccionesPost.class);
                 intent.putExtra(EXTRA_IDEA_ID,  ideaviewmodel.getId().getValue().toString());
                 startActivity(intent);
             }
